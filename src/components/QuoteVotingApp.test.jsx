@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import QuoteVotingApp from './QuoteVotingApp';
 import '@testing-library/jest-dom';
 
+// eslint-disable-next-line no-undef
 test('renders and likes a quote', () => {
   render(<QuoteVotingApp />);
 
@@ -10,30 +11,33 @@ test('renders and likes a quote', () => {
   const likes = screen.getByTestId('likes');
   const likeBtn = screen.getByTestId('like-button');
 
+  // eslint-disable-next-line no-undef
   expect(quote).toBeInTheDocument();
+  // eslint-disable-next-line no-undef
   expect(likes).toHaveTextContent('Likes: 0');
 
-  // Wrap state-changing interaction with act
   act(() => {
     fireEvent.click(likeBtn);
   });
 
+  // eslint-disable-next-line no-undef
   expect(likes).toHaveTextContent('Likes: 1');
 });
 
-test('clicking next shows a new quote (may repeat)', () => {
+// eslint-disable-next-line no-undef
+test('clicking next still displays a quote', () => {
   render(<QuoteVotingApp />);
 
-  const quoteBefore = screen.getByTestId('quote').textContent;
   const nextBtn = screen.getByTestId('next-button');
 
-  // Wrap state-changing interaction with act
   act(() => {
     fireEvent.click(nextBtn);
   });
 
   const quoteAfter = screen.getByTestId('quote').textContent;
 
+  // eslint-disable-next-line no-undef
   expect(quoteAfter).toBeDefined();
+  // eslint-disable-next-line no-undef
   expect(quoteAfter).not.toBeNull();
 });

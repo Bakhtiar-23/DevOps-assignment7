@@ -1,0 +1,18 @@
+# ---------- Development Stage ----------
+FROM node:18-alpine AS development
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy source files
+COPY . .
+
+# Expose Vite dev server port
+EXPOSE 5178
+
+# Start the development server
+CMD ["npm", "run", "dev"]
